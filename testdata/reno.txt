@@ -1,0 +1,5 @@
+TCP Reno's fast retransmit algorithm triggers retransmission upon receipt of three duplicate ACKs, avoiding the costly wait for a retransmission timeout.
+
+Reno's congestion window recovery after fast retransmit — halving cwnd and re-entering congestion avoidance — proved suboptimal for connections experiencing multiple losses within a single window, motivating the development of Reno's successor, NewReno, which tracks partial ACKs during recovery to retransmit multiple lost segments without waiting for further timeouts.
+
+Separately, Van Jacobson's original 1988 paper established the theoretical basis for both slow start and congestion avoidance, arguing from first principles that a sender must probe available capacity rather than assume it.

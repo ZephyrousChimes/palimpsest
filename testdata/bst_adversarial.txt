@@ -1,0 +1,9 @@
+A binary search tree maintains its elements in sorted order by ensuring that, for every node, all values in its left subtree are smaller and all values in its right subtree are larger. This single invariant is what makes both search and insertion efficient, since at each node the algorithm can discard an entire half of the remaining tree just by comparing against the current node's value.
+
+To restate the same point more concretely: because of this ordering invariant, searching for a value never requires visiting more than one node per level of the tree, since each comparison eliminates one whole subtree from consideration. This is why a balanced binary search tree achieves logarithmic search time — the invariant described above is the entire reason the search doesn't need to look at most of the tree at all.
+
+Insertion works by walking down from the root using the same comparisons a search would use, then attaching the new node as a leaf at the first empty position found. No rebalancing happens during a plain insertion; the tree's shape after many insertions depends entirely on the order elements arrived in, which is why a sequence of already-sorted insertions degrades a naive binary search tree into a linked list with O(n) search time.
+
+This degradation problem — the fact that insertion order can destroy the tree's efficiency — is precisely what self-balancing variants like AVL trees and red-black trees are designed to prevent. AVL trees enforce a stricter invariant, that the heights of any node's two subtrees differ by at most one, and restore this invariant after every insertion or deletion via rotations.
+
+Red-black trees take a different approach to the same underlying problem, using a looser balance condition enforced through node coloring rules rather than tracking exact subtree heights, which in practice means fewer rotations are needed on average during insertion at the cost of a somewhat less tightly balanced tree overall.
